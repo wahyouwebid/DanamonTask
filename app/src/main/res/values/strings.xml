@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">DanamonTask</string>
+    <string name="content_description">Image Content Description</string>
+    <string name="title_login">Login</string>
+    <string name="title_login_description">Please Fill the detail for Log in to your account</string>
+    <string name="title_label_email">Email</string>
+    <string name="title_enter_email">Enter your email</string>
+    <string name="title_enter_password">Enter your password</string>
+    <string name="title_label_password">Password</string>
+    <string name="title_register">Register</string>
+    <string name="title_register_description">Please Fill the detail for Register</string>
+    <string name="title_register_error">Register error, your email already exist</string>
+    <string name="title_role_user">User</string>
+    <string name="title_role_admin">Admin</string>
+    <string name="title_label_role">Role</string>
+    <string name="title_enter_username">Username</string>
+    <string name="title_label_username">Username</string>
+    <string name="title_register_login">Login Failed. Please check your email or password and try again.</string>
+    <string name="title_field_required">This field is required.</string>
 </resources>

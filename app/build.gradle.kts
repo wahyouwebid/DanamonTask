@@ -61,6 +61,7 @@ dependencies {
         implementation(constraintLayout)
         implementation(pagingRuntime)
         implementation(pagingRxJava)
+        implementation(securityCrypto)
     }
 
     Dependencies.UiLib.apply {
