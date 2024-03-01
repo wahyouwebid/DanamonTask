@@ -12,6 +12,7 @@ object Dependencies {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val pagingRuntime = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
         const val pagingRxJava = "androidx.paging:paging-rxjava3:${Versions.paging}"
+        const val securityCrypto = "androidx.security:security-crypto:${Versions.security}"
     }
 
     object NetworkingLib {

@@ -25,4 +25,5 @@ object Versions {
     const val testJunit = "4.13.2"
     const val androidJunit = "1.1.3"
     const val espresso = "3.4.0"
+    const val security = "1.1.0-alpha06"
 }
