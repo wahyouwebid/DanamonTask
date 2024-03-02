@@ -10,11 +10,11 @@ import androidx.navigation.findNavController
 import com.wahyouwebid.danamontask.R
 import com.wahyouwebid.danamontask.common.base.BaseFragment
 import com.wahyouwebid.danamontask.common.utils.isVisibilityError
-import com.wahyouwebid.danamontask.core.navigation.NavigationAction
-import com.wahyouwebid.danamontask.core.navigation.navigate
 import com.wahyouwebid.danamontask.databinding.FragmentLoginBinding
 import com.wahyouwebid.danamontask.features.auth.presentation.AuthViewModel
 import com.wahyouwebid.danamontask.features.main.MainActivity
+import com.wahyouwebid.danamontask.navigation.NavigationAction
+import com.wahyouwebid.danamontask.navigation.navigate
 import dagger.hilt.android.AndroidEntryPoint
 
 /***********************************************************************************

@@ -1,10 +1,9 @@
 package com.wahyouwebid.danamontask.features.auth.presentation
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.AuthUseCase
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.model.ValidationResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

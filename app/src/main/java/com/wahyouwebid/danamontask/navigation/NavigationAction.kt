@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.core.navigation
+package com.wahyouwebid.danamontask.navigation
 
 sealed class NavigationAction {
     object LoginToRegister : NavigationAction()

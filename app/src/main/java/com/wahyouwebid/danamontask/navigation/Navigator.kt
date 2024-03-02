@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.core.navigation
+package com.wahyouwebid.danamontask.navigation
 
 import androidx.navigation.NavController
 import com.wahyouwebid.danamontask.R

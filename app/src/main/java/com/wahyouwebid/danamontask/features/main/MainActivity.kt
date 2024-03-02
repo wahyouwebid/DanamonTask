@@ -1,12 +1,11 @@
 package com.wahyouwebid.danamontask.features.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.wahyouwebid.danamontask.R
+import com.wahyouwebid.danamontask.common.base.BaseActivity
+import com.wahyouwebid.danamontask.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    override fun setupView(savedInstanceState: Bundle?) {}
 }

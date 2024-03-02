@@ -1,6 +1,5 @@
 package com.wahyouwebid.danamontask.features.auth.di
 
-import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.core.database.RoomDB
 import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.auth.data.AuthRepositoryImpl

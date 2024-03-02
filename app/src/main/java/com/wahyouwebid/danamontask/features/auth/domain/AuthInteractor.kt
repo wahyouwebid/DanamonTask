@@ -1,8 +1,8 @@
 package com.wahyouwebid.danamontask.features.auth.domain
 
 import com.wahyouwebid.danamontask.common.utils.getRegex
+import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.model.ErrorField
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.model.ValidationResult
 import javax.inject.Inject
 

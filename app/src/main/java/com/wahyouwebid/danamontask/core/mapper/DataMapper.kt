@@ -1,7 +1,7 @@
-package com.wahyouwebid.danamontask.features.auth.data.mapper
+package com.wahyouwebid.danamontask.core.mapper
 
-import com.wahyouwebid.danamontask.features.auth.data.entity.UserEntity
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
+import com.wahyouwebid.danamontask.core.entity.UserEntity
+import com.wahyouwebid.danamontask.core.model.User
 
 /***********************************************************************************
  * Created by Ujang Wahyu

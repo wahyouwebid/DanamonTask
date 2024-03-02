@@ -10,8 +10,8 @@ import com.wahyouwebid.danamontask.R
 import com.wahyouwebid.danamontask.common.base.BaseFragment
 import com.wahyouwebid.danamontask.common.utils.UserRole
 import com.wahyouwebid.danamontask.common.utils.isVisibilityError
+import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.databinding.FragmentRegisterBinding
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
 import com.wahyouwebid.danamontask.features.auth.presentation.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

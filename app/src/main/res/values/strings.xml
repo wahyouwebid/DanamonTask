@@ -17,4 +17,11 @@
     <string name="title_label_username">Username</string>
     <string name="title_register_login">Login Failed. Please check your email or password and try again.</string>
     <string name="title_field_required">This field is required.</string>
+    <string name="title_admin">Admin</string>
+    <string name="title_data_empty">Data is empty</string>
+    <string name="title_error">There is an error</string>
+    <string name="title_error_no_internet">No Internet connection</string>
+    <string name="title_error_no_internet_des">Please check your internet connection</string>
+    <string name="title_try_again">Try Again</string>
+    <string name="title_error_des">Your requested cannot be processed.</string>
 </resources>
