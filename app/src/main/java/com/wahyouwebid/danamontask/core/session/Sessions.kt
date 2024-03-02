@@ -17,6 +17,7 @@ class Sessions(val context: Context) {
 
         const val isLogin: String = "isLogin"
         const val role: String = "role"
+        const val userId: String = "userId"
     }
 
     private var editor: SharedPreferences.Editor? = null

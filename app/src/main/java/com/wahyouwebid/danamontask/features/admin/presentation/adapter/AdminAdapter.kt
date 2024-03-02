@@ -1,10 +1,12 @@
-package com.wahyouwebid.danamontask.features.admin.presentation
+package com.wahyouwebid.danamontask.features.admin.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.wahyouwebid.danamontask.R
+import com.wahyouwebid.danamontask.common.utils.UserRole
 import com.wahyouwebid.danamontask.common.utils.splitString
 import com.wahyouwebid.danamontask.core.entity.UserEntity
 import com.wahyouwebid.danamontask.databinding.AdapterAdminBinding
@@ -17,8 +19,7 @@ import com.wahyouwebid.danamontask.databinding.AdapterAdminBinding
  */
 
 class AdminAdapter(
-    val showDetail: (UserEntity?) -> Unit,
-    val showMore: (UserEntity?) -> Unit
+    val actionEdit: (UserEntity?) -> Unit,
 ) : PagingDataAdapter<UserEntity, AdminAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(val binding: AdapterAdminBinding) : RecyclerView.ViewHolder(binding.root)
@@ -28,18 +29,16 @@ class AdminAdapter(
             tvName.text = getItem(position)?.username
             tvEmail.text = getItem(position)?.email
             tvThumbnail.text = getItem(position)?.username?.splitString()
-
+            tvId.text = String.format("#ID: ${getItem(position)?.id}")
+            tvRole.text = if (getItem(position)?.role == UserRole.USER.value) {
+                tvRole.context.getString(R.string.title_role_user)
+            } else {
+                tvRole.context.getString(R.string.title_role_admin)
+            }
             root.setOnClickListener {
-                showDetail(getItem(position))
+                actionEdit(getItem(position))
             }
 
-            ivMore.setOnClickListener {
-                showMore(getItem(position))
-            }
-
-            root.setOnClickListener {
-                showDetail.invoke(getItem(position))
-            }
         }
     }
 

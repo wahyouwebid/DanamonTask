@@ -11,3 +11,7 @@ enum class UserRole(val value: Int) {
     USER(0),
     ADMIN(1),
 }
+
+enum class KeyBundle {
+    DATA
+}

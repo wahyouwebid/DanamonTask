@@ -25,4 +25,15 @@
     <string name="title_try_again">Try Again</string>
     <string name="title_error_des">Your requested cannot be processed.</string>
     <string name="title_users">Users</string>
+    <string name="title_verification">Verification</string>
+    <string name="title_verification_des">For security purposes, please enter your password to confirm deletion.</string>
+    <string name="title_verification_failed">Verification Failed. Please check your password and try again.</string>
+    <string name="title_confirmation_delete">Delete User</string>
+    <string name="title_confirmation_delete_des">Are you sure you want to delete user %1$s?</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_save">Save</string>
+    <string name="title_delete">Delete</string>
+    <string name="title_cancel">Cancel</string>
+    <string name="title_edit_description">Modify User Information</string>
+    <string name="title_password_cannot_empty">Password cannot be empty</string>
 </resources>

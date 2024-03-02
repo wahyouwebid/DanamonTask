@@ -40,6 +40,7 @@ class AuthRepositoryImpl @Inject constructor(
                     if (userMapper != null) {
                         sessions.putBoolean(Sessions.isLogin, true)
                         sessions.putInteger(Sessions.role, userMapper.role ?: 0)
+                        sessions.putInteger(Sessions.userId, userMapper.id)
                         result.invoke(LoginResult(true, userMapper))
                     } else {
                         result.invoke(LoginResult(false))

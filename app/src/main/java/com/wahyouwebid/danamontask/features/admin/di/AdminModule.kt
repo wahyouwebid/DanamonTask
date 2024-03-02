@@ -2,6 +2,7 @@ package com.wahyouwebid.danamontask.features.admin.di
 
 import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.core.dao.UserDao
+import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.admin.data.AdminRepositoryImpl
 import com.wahyouwebid.danamontask.features.admin.domain.AdminInteractor
 import com.wahyouwebid.danamontask.features.admin.domain.AdminRepository
@@ -28,9 +29,10 @@ class AdminModule {
     fun provideDatasource(
         dao: UserDao,
         pagingConfig: PagingConfig,
-        disposable: CompositeDisposable
+        sessions: Sessions,
+        disposable: CompositeDisposable,
     ): AdminRepository {
-        return AdminRepositoryImpl(dao, pagingConfig, disposable)
+        return AdminRepositoryImpl(dao, pagingConfig, sessions, disposable)
     }
 
 

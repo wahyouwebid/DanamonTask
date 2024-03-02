@@ -1,6 +1,7 @@
-package com.wahyouwebid.danamontask.features.admin.presentation
+package com.wahyouwebid.danamontask.features.admin.presentation.list
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -10,8 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wahyouwebid.danamontask.R
 import com.wahyouwebid.danamontask.common.base.BaseFragment
 import com.wahyouwebid.danamontask.common.utils.FooterAdapter
+import com.wahyouwebid.danamontask.common.utils.KeyBundle
 import com.wahyouwebid.danamontask.common.utils.isVisibility
 import com.wahyouwebid.danamontask.databinding.FragmentAdminBinding
+import com.wahyouwebid.danamontask.features.admin.presentation.AdminViewModel
+import com.wahyouwebid.danamontask.features.admin.presentation.adapter.AdminAdapter
 import com.wahyouwebid.danamontask.navigation.NavigationAction
 import com.wahyouwebid.danamontask.navigation.navigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
  ******************************************************************************************/
 
 @AndroidEntryPoint
-class AdminFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::inflate) {
+class AdminListFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::inflate) {
 
     private val viewModel: AdminViewModel by viewModels()
 
@@ -33,10 +37,12 @@ class AdminFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::in
     }
 
     private val adapter: AdminAdapter by lazy {
-        AdminAdapter (
-            showDetail = {},
-            showMore = {},
-        )
+        AdminAdapter { item ->
+            navigation?.navigate(
+                NavigationAction.AdminToEdit,
+                bundleOf(KeyBundle.DATA.name to item)
+            )
+        }
     }
 
     override fun setupView(savedInstanceState: Bundle?) = with(binding) {
@@ -69,4 +75,5 @@ class AdminFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::in
             adapter.submitData(lifecycle, result)
         }
     }
+
 }

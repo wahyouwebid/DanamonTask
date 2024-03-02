@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.common.utils.logError
 import com.wahyouwebid.danamontask.core.dao.UserDao
 import com.wahyouwebid.danamontask.core.entity.UserEntity
+import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.admin.domain.AdminRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class AdminRepositoryImpl @Inject constructor(
     private val dao : UserDao,
     private val pagingConfig: PagingConfig,
+    private val sessions: Sessions,
     private val disposable: CompositeDisposable,
 ): AdminRepository {
 
@@ -40,8 +42,17 @@ class AdminRepositoryImpl @Inject constructor(
             .let(disposable::add)
     }
 
+    override fun getMyProfile(callback: (UserEntity) -> Unit) {
+        val id = sessions.getInteger(Sessions.userId)
+        dao.getById(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ callback.invoke(it) }, { it.logError() })
+            .let(disposable::add)
+    }
+
     override fun updateUser(data: UserEntity) {
-        dao.update(data)
+        dao.update(data.id, data.username, data.email, data.role)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()

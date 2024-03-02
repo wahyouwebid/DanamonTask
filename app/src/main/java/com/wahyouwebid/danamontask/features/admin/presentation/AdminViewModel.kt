@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import com.wahyouwebid.danamontask.core.entity.UserEntity
 import com.wahyouwebid.danamontask.features.admin.domain.AdminUseCase
 import com.wahyouwebid.danamontask.features.auth.domain.AuthUseCase
+import com.wahyouwebid.danamontask.features.auth.domain.model.ValidationResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,6 +28,12 @@ class AdminViewModel @Inject constructor(
 
     val user: MutableLiveData<UserEntity> by lazy { MutableLiveData() }
 
+    val myProfile: MutableLiveData<UserEntity> by lazy { MutableLiveData() }
+
+    val emailValidationResult = MutableLiveData<ValidationResult>()
+
+    val usernameValidationResult = MutableLiveData<ValidationResult>()
+
     fun getUserList() {
         adminUseCase.getUsers(viewModelScope) {
             userList.postValue(it)
@@ -36,6 +43,12 @@ class AdminViewModel @Inject constructor(
     fun getUserById(id: Int) {
         adminUseCase.getUserById(id) {
             user.postValue(it)
+        }
+    }
+
+    fun getMyProfile() {
+        adminUseCase.getMyProfile {
+            myProfile.postValue(it)
         }
     }
 
@@ -50,5 +63,17 @@ class AdminViewModel @Inject constructor(
     fun logout() {
         authUseCase.logout()
     }
+
+    fun validateEmail(email: String) {
+        emailValidationResult.value = authUseCase.validateEmail(email)
+    }
+
+    fun validateUsername(username: String) {
+        usernameValidationResult.value = authUseCase.validateUsername(username)
+    }
+
+    fun isEditValidate() =
+        emailValidationResult.value?.successful == true &&
+        usernameValidationResult.value?.successful == true
 
 }

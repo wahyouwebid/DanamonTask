@@ -15,14 +15,17 @@ object DataMapper {
 
     fun UserEntity?.mapUserEntityToUser(): User? {
         return User(
+            id = this?.id ?: 0,
             username = this?.username,
             role = this?.role,
             email = this?.email,
+            password = this?.password
         )
     }
 
     fun User?.mapUserToUserEntity(): UserEntity {
         return UserEntity(
+            id = this?.id ?: 0,
             username = this?.username ?: "",
             role = this?.role ?: 0,
             email = this?.email ?: "",

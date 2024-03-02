@@ -17,6 +17,8 @@ interface AdminRepository {
 
     fun getUsersById(id: Int, callback: (UserEntity) -> Unit)
 
+    fun getMyProfile(callback: (UserEntity) -> Unit)
+
     fun updateUser(data: UserEntity)
 
     fun deleteUser(id: Int)

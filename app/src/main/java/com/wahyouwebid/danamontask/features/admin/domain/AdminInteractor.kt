@@ -33,6 +33,10 @@ class AdminInteractor @Inject constructor(
         repository.getUsersById(id, callback)
     }
 
+    override fun getMyProfile(callback: (UserEntity) -> Unit) {
+        repository.getMyProfile(callback)
+    }
+
     override fun updateUser(data: UserEntity) {
         repository.updateUser(data)
     }
