@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.main.admin.presentation
+package com.wahyouwebid.danamontask.features.admin.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

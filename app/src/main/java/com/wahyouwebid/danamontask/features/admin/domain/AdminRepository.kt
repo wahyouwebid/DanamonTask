@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.main.admin.domain
+package com.wahyouwebid.danamontask.features.admin.domain
 
 import androidx.paging.Pager
 import com.wahyouwebid.danamontask.core.entity.UserEntity

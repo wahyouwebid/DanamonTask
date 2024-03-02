@@ -24,4 +24,5 @@
     <string name="title_error_no_internet_des">Please check your internet connection</string>
     <string name="title_try_again">Try Again</string>
     <string name="title_error_des">Your requested cannot be processed.</string>
+    <string name="title_users">Users</string>
 </resources>

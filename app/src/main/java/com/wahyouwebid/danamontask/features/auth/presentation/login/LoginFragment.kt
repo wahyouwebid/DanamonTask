@@ -1,6 +1,5 @@
 package com.wahyouwebid.danamontask.features.auth.presentation.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -9,10 +8,11 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wahyouwebid.danamontask.R
 import com.wahyouwebid.danamontask.common.base.BaseFragment
+import com.wahyouwebid.danamontask.common.utils.UserRole
 import com.wahyouwebid.danamontask.common.utils.isVisibilityError
 import com.wahyouwebid.danamontask.databinding.FragmentLoginBinding
+import com.wahyouwebid.danamontask.features.auth.domain.model.LoginResult
 import com.wahyouwebid.danamontask.features.auth.presentation.AuthViewModel
-import com.wahyouwebid.danamontask.features.main.MainActivity
 import com.wahyouwebid.danamontask.navigation.NavigationAction
 import com.wahyouwebid.danamontask.navigation.navigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::in
     private val viewModel: AuthViewModel by viewModels()
 
     private val navigation: NavController? by lazy {
-        activity?.findNavController(R.id.nav_host_auth)
+        activity?.findNavController(R.id.nav_host_main)
     }
 
     override fun setupView(savedInstanceState: Bundle?) {
@@ -67,14 +67,9 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::in
     }
 
     override fun setupViewModel() = with(binding){
-        viewModel.isSuccessLogin.observe(viewLifecycleOwner) { isSuccess ->
-            if (isSuccess != null) {
-                if (isSuccess) {
-                    startActivity(Intent(requireContext(), MainActivity::class.java))
-                    activity?.finish()
-                } else {
-                    setError(getString(R.string.title_register_login))
-                }
+        viewModel.isSuccessLogin.observe(viewLifecycleOwner) { result ->
+            if (result != null) {
+                checkUserRole(result)
             }
         }
 
@@ -88,6 +83,18 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::in
             tvErrorPassword.text = validationResult.errorMessage
         }
 
+    }
+
+    private fun checkUserRole(result: LoginResult) {
+        if (result.isSuccess) {
+            if (result.data?.role == UserRole.ADMIN.value) {
+                navigation?.navigate(NavigationAction.LoginToAdmin)
+            } else {
+                navigation?.navigate(NavigationAction.LoginToUsers)
+            }
+        } else {
+            setError(getString(R.string.title_register_login))
+        }
     }
 
     private fun setError(message: String) {

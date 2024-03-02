@@ -6,6 +6,7 @@ import com.wahyouwebid.danamontask.core.mapper.DataMapper.mapUserToUserEntity
 import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.auth.domain.AuthRepository
+import com.wahyouwebid.danamontask.features.auth.domain.model.LoginResult
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -28,23 +29,24 @@ class AuthRepositoryImpl @Inject constructor(
     override fun login(
         email: String,
         password: String,
-        isSuccess: (Boolean) -> Unit
+        result: (LoginResult?) -> Unit
     ) {
         db.userDao().login(email, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .map { userEntity -> userEntity.mapUserEntityToUser() != null }
             .subscribe(
-                { userExists ->
-                    if (userExists) {
+                { response ->
+                    val userMapper = response.mapUserEntityToUser()
+                    if (userMapper != null) {
                         sessions.putBoolean(Sessions.isLogin, true)
-                        isSuccess(true)
+                        sessions.putInteger(Sessions.role, userMapper.role ?: 0)
+                        result.invoke(LoginResult(true, userMapper))
                     } else {
-                        isSuccess(false)
+                        result.invoke(LoginResult(false))
                     }
                 },
                 {
-                    isSuccess(false)
+                    result.invoke(LoginResult(false))
                 }
             )
             .let(disposable::add)
@@ -59,5 +61,9 @@ class AuthRepositoryImpl @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { isSuccess.invoke(true) }
             .let(disposable::add)
+    }
+
+    override fun logout() {
+        sessions.putBoolean(Sessions.isLogin, false)
     }
 }

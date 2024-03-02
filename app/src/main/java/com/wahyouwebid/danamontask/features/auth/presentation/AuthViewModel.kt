@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.AuthUseCase
+import com.wahyouwebid.danamontask.features.auth.domain.model.LoginResult
 import com.wahyouwebid.danamontask.features.auth.domain.model.ValidationResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,7 +21,7 @@ class AuthViewModel @Inject constructor(
     private val useCase: AuthUseCase
 ): ViewModel() {
 
-    val isSuccessLogin: MutableLiveData<Boolean> by lazy { MutableLiveData() }
+    val isSuccessLogin: MutableLiveData<LoginResult> by lazy { MutableLiveData() }
 
     val isSuccessRegister: MutableLiveData<Boolean> by lazy { MutableLiveData() }
 
@@ -32,8 +33,8 @@ class AuthViewModel @Inject constructor(
 
 
     fun login(email: String, password: String) {
-        useCase.login(email, password) { isSuccessful ->
-            isSuccessLogin.postValue(isSuccessful)
+        useCase.login(email, password) { result ->
+            isSuccessLogin.postValue(result)
         }
     }
 
@@ -41,6 +42,10 @@ class AuthViewModel @Inject constructor(
         useCase.register(user) { isSuccessful ->
             isSuccessRegister.postValue(isSuccessful)
         }
+    }
+
+    fun logout() {
+        useCase.logout()
     }
 
     fun validateEmail(email: String) {

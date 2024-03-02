@@ -1,11 +1,11 @@
-package com.wahyouwebid.danamontask.features.main.admin.di
+package com.wahyouwebid.danamontask.features.admin.di
 
 import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.core.dao.UserDao
-import com.wahyouwebid.danamontask.features.main.admin.data.AdminRepositoryImpl
-import com.wahyouwebid.danamontask.features.main.admin.domain.AdminInteractor
-import com.wahyouwebid.danamontask.features.main.admin.domain.AdminRepository
-import com.wahyouwebid.danamontask.features.main.admin.domain.AdminUseCase
+import com.wahyouwebid.danamontask.features.admin.data.AdminRepositoryImpl
+import com.wahyouwebid.danamontask.features.admin.domain.AdminInteractor
+import com.wahyouwebid.danamontask.features.admin.domain.AdminRepository
+import com.wahyouwebid.danamontask.features.admin.domain.AdminUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

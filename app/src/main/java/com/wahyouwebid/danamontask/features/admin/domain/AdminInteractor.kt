@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.main.admin.domain
+package com.wahyouwebid.danamontask.features.admin.domain
 
 import androidx.paging.PagingData
 import androidx.paging.rxjava3.cachedIn
