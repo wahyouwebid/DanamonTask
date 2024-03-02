@@ -1,4 +1,6 @@
-package com.wahyouwebid.danamontask.common.utils
+package com.wahyouwebid.danamontask.features.auth.domain.model
+
+import com.wahyouwebid.danamontask.core.model.User
 
 /***********************************************************************************
  * Created by Ujang Wahyu
@@ -6,12 +8,8 @@ package com.wahyouwebid.danamontask.common.utils
  * Github: github.com/wahyouwebid
  * Linkedin: linkedin.com/in/wahyouwebid,
  ******************************************************************************************/
- 
-enum class UserRole(val value: Int) {
-    USER(0),
-    ADMIN(1),
-}
 
-enum class KeyBundle {
-    DATA
-}
+data class LoginResult(
+    val isSuccess: Boolean,
+    val data: User? = null,
+)

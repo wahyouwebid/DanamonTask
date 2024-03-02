@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.wahyouwebid.danamontask.BuildConfig
-import com.wahyouwebid.danamontask.features.auth.data.dao.UserDao
-import com.wahyouwebid.danamontask.features.auth.data.entity.UserEntity
+import com.wahyouwebid.danamontask.core.dao.UserDao
+import com.wahyouwebid.danamontask.core.entity.UserEntity
 
 @Database(
     entities = [UserEntity::class, ],

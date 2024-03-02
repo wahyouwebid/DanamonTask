@@ -16,6 +16,8 @@ class Sessions(val context: Context) {
         const val secretSharedPref: String = "secret_shared_prefs"
 
         const val isLogin: String = "isLogin"
+        const val role: String = "role"
+        const val userId: String = "userId"
     }
 
     private var editor: SharedPreferences.Editor? = null
@@ -46,8 +48,17 @@ class Sessions(val context: Context) {
         editor?.commit()
     }
 
+    fun putInteger(key: String, value: Int) {
+        editor?.putInt(key, value)
+        editor?.commit()
+    }
+
     fun getBoolean(key: String): Boolean {
         return pref.getBoolean(key, false)
+    }
+
+    fun getInteger(key: String): Int {
+        return pref.getInt(key, 0)
     }
 
     fun logOut() {

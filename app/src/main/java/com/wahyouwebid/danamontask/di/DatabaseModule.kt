@@ -1,6 +1,7 @@
 package com.wahyouwebid.danamontask.di
 
 import android.content.Context
+import com.wahyouwebid.danamontask.core.dao.UserDao
 import com.wahyouwebid.danamontask.core.database.RoomDB
 import dagger.Module
 import dagger.Provides
@@ -24,4 +25,9 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context) : RoomDB = RoomDB(context)
+
+
+    @Provides
+    fun provideUserDao(database: RoomDB): UserDao = database.userDao()
+
 }

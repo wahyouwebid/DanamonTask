@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.auth.domain.model
+package com.wahyouwebid.danamontask.core.model
 
 /***********************************************************************************
  * Created by Ujang Wahyu

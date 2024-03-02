@@ -16,56 +16,36 @@
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
             android:background="@drawable/bg_circle"
-            android:src="@drawable/ic_back"
+            android:contentDescription="@string/content_description"
             android:padding="@dimen/_10sdp"
-            android:contentDescription="@string/content_description"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_login"
+            android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_login" />
-
-        <ImageView
-            android:id="@+id/iv_login"
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
-            android:src="@drawable/ic_auth"
-            android:contentDescription="@string/content_description"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_register"
-            android:textColor="@color/colorTextPrimary"
+            android:layout_marginStart="@dimen/_16sdp"
             android:fontFamily="@font/poppins_bold"
+            android:text="@string/title_edit"
+            android:textColor="@color/colorTextPrimary"
             android:textSize="@dimen/_25ssp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintTop_toBottomOf="@+id/iv_login"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/tv_login_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_register_description"
-            android:textColor="@color/colorTextSecondary"
-            android:fontFamily="@font/poppins_light"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginTop="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
 
         <TextView
             android:id="@+id/tv_label_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_25ssp"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@string/title_label_username"
             android:textColor="@color/colorTextPrimary"
-            android:fontFamily="@font/poppins_semibold"
             android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_login_description" />
+            android:layout_marginTop="@dimen/_56sdp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_back" />
 
         <EditText
             android:id="@+id/et_username"
@@ -124,13 +104,13 @@
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="@dimen/_8sdp"
             android:hint="@string/title_enter_email"
+            android:maxLength="20"
             android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="@dimen/_8sdp"
             android:paddingStart="@dimen/_16sdp"
             android:paddingTop="@dimen/_8sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:paddingBottom="@dimen/_8sdp"
-            android:maxLength="20"
             android:textSize="14sp"
             tools:ignore="Autofill,TextFields"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,54 +131,6 @@
             app:layout_constraintTop_toBottomOf="@+id/et_email"/>
 
         <TextView
-            android:id="@+id/tv_label_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_25ssp"
-            android:text="@string/title_label_password"
-            android:textColor="@color/colorTextPrimary"
-            android:fontFamily="@font/poppins_semibold"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_error_email" />
-
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_56sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bg_form"
-            android:drawableStart="@drawable/ic_password"
-            android:drawablePadding="@dimen/_8sdp"
-            android:hint="@string/title_enter_password"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:paddingStart="@dimen/_16sdp"
-            android:paddingTop="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_16sdp"
-            android:paddingBottom="@dimen/_8sdp"
-            android:textSize="14sp"
-            android:maxLength="20"
-            android:inputType="textPassword"
-            tools:ignore="Autofill,TextFields"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_label_password" />
-
-        <TextView
-            android:id="@+id/tv_error_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Error"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@color/red"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password"/>
-
-        <TextView
             android:id="@+id/tv_label_role"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -207,7 +139,7 @@
             android:textColor="@color/colorTextPrimary"
             android:fontFamily="@font/poppins_semibold"
             android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_error_password" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_error_email" />
 
         <LinearLayout
             android:id="@+id/ll_role"
@@ -263,15 +195,32 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_delete"
+            android:layout_width="0dp"
             android:layout_height="@dimen/_54sdp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/bg_button_red"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_16ssp"
-            android:text="@string/title_register"
+            android:text="@string/title_delete"
             android:layout_marginTop="@dimen/_50sdp"
-            app:layout_constraintTop_toBottomOf="@+id/ll_role"/>
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_save"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_54sdp"
+            android:background="@drawable/bg_button"
+            android:text="@string/title_save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintStart_toEndOf="@+id/btn_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

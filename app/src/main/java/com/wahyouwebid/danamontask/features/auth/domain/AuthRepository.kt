@@ -1,6 +1,7 @@
 package com.wahyouwebid.danamontask.features.auth.domain
 
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
+import com.wahyouwebid.danamontask.core.model.User
+import com.wahyouwebid.danamontask.features.auth.domain.model.LoginResult
 
 /***********************************************************************************
  * Created by Ujang Wahyu
@@ -15,12 +16,14 @@ interface AuthRepository {
     fun login(
         email: String,
         password: String,
-        isSuccess: (Boolean) -> Unit
+        result: (LoginResult?) -> Unit
     )
 
     fun register(
         data: User,
         isSuccess: (Boolean) -> Unit
     )
+
+    fun logout()
 
 }

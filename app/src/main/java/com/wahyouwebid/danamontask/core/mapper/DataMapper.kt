@@ -1,7 +1,7 @@
-package com.wahyouwebid.danamontask.features.auth.data.mapper
+package com.wahyouwebid.danamontask.core.mapper
 
-import com.wahyouwebid.danamontask.features.auth.data.entity.UserEntity
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
+import com.wahyouwebid.danamontask.core.entity.UserEntity
+import com.wahyouwebid.danamontask.core.model.User
 
 /***********************************************************************************
  * Created by Ujang Wahyu
@@ -15,14 +15,17 @@ object DataMapper {
 
     fun UserEntity?.mapUserEntityToUser(): User? {
         return User(
+            id = this?.id ?: 0,
             username = this?.username,
             role = this?.role,
             email = this?.email,
+            password = this?.password
         )
     }
 
     fun User?.mapUserToUserEntity(): UserEntity {
         return UserEntity(
+            id = this?.id ?: 0,
             username = this?.username ?: "",
             role = this?.role ?: 0,
             email = this?.email ?: "",

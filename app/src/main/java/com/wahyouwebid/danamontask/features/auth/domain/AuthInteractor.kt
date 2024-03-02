@@ -1,8 +1,9 @@
 package com.wahyouwebid.danamontask.features.auth.domain
 
 import com.wahyouwebid.danamontask.common.utils.getRegex
+import com.wahyouwebid.danamontask.core.model.User
 import com.wahyouwebid.danamontask.features.auth.domain.model.ErrorField
-import com.wahyouwebid.danamontask.features.auth.domain.model.User
+import com.wahyouwebid.danamontask.features.auth.domain.model.LoginResult
 import com.wahyouwebid.danamontask.features.auth.domain.model.ValidationResult
 import javax.inject.Inject
 
@@ -18,12 +19,23 @@ class AuthInteractor @Inject constructor(
     private val repository: AuthRepository
 ): AuthUseCase {
 
-    override fun login(email: String, password: String, isSuccess: (Boolean) -> Unit) {
-        repository.login(email, password, isSuccess)
+    override fun login(
+        email: String,
+        password: String,
+        result: (LoginResult?) -> Unit
+    ) {
+        repository.login(email, password, result)
     }
 
-    override fun register(data: User, isSuccess: (Boolean) -> Unit) {
+    override fun register(
+        data: User,
+        isSuccess: (Boolean) -> Unit
+    ) {
         repository.register(data, isSuccess)
+    }
+
+    override fun logout() {
+        repository.logout()
     }
 
     override fun validateEmail(email: String): ValidationResult {
@@ -62,11 +74,13 @@ class AuthInteractor @Inject constructor(
     }
 
     override fun validatePassword(password: String): ValidationResult {
+        val minLength = 8
+
         return when {
             password.isEmpty() -> {
                 ValidationResult(false, ErrorField.PASSWORD_EMPTY.message)
             }
-            password.length < 9 -> {
+            password.length < minLength -> {
                 ValidationResult(false, ErrorField.PASSWORD_INVALID_LENGTH.message)
             }
             else -> {

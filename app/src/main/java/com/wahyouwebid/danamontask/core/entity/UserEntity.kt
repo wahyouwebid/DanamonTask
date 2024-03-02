@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.auth.data.entity
+package com.wahyouwebid.danamontask.core.entity
 
 import android.os.Parcelable
 import androidx.room.Entity
