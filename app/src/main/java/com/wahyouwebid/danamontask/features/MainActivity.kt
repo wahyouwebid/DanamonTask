@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.features.main
+package com.wahyouwebid.danamontask.features
 
 import android.os.Bundle
 import com.wahyouwebid.danamontask.common.base.BaseActivity
@@ -7,5 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
-    override fun setupView(savedInstanceState: Bundle?) {}
+
+    override fun setupView(savedInstanceState: Bundle?) = Unit
+
 }

@@ -1,11 +1,11 @@
-package com.wahyouwebid.danamontask.features.main.admin.data
+package com.wahyouwebid.danamontask.features.admin.data
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.common.utils.logError
 import com.wahyouwebid.danamontask.core.dao.UserDao
 import com.wahyouwebid.danamontask.core.entity.UserEntity
-import com.wahyouwebid.danamontask.features.main.admin.domain.AdminRepository
+import com.wahyouwebid.danamontask.features.admin.domain.AdminRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers

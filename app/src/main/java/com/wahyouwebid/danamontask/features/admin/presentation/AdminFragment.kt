@@ -1,14 +1,19 @@
-package com.wahyouwebid.danamontask.features.main.admin.presentation
+package com.wahyouwebid.danamontask.features.admin.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.wahyouwebid.danamontask.R
 import com.wahyouwebid.danamontask.common.base.BaseFragment
 import com.wahyouwebid.danamontask.common.utils.FooterAdapter
 import com.wahyouwebid.danamontask.common.utils.isVisibility
 import com.wahyouwebid.danamontask.databinding.FragmentAdminBinding
+import com.wahyouwebid.danamontask.navigation.NavigationAction
+import com.wahyouwebid.danamontask.navigation.navigate
 import dagger.hilt.android.AndroidEntryPoint
 
 /***********************************************************************************
@@ -23,6 +28,10 @@ class AdminFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::in
 
     private val viewModel: AdminViewModel by viewModels()
 
+    private val navigation: NavController? by lazy {
+        activity?.findNavController(R.id.nav_host_main)
+    }
+
     private val adapter: AdminAdapter by lazy {
         AdminAdapter (
             showDetail = {},
@@ -35,6 +44,10 @@ class AdminFragment: BaseFragment<FragmentAdminBinding>(FragmentAdminBinding::in
         rvData.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvData.setHasFixedSize(true)
         adapter.addLoadStateListener { loadState(it) }
+        ivLogout.setOnClickListener {
+            viewModel.logout()
+            navigation?.navigate(NavigationAction.AdminToLogin)
+        }
     }
 
     private fun loadState(loadState: CombinedLoadStates) {

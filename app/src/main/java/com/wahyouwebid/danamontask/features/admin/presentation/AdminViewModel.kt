@@ -1,11 +1,12 @@
-package com.wahyouwebid.danamontask.features.main.admin.presentation
+package com.wahyouwebid.danamontask.features.admin.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.wahyouwebid.danamontask.core.entity.UserEntity
-import com.wahyouwebid.danamontask.features.main.admin.domain.AdminUseCase
+import com.wahyouwebid.danamontask.features.admin.domain.AdminUseCase
+import com.wahyouwebid.danamontask.features.auth.domain.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminViewModel @Inject constructor(
-    private val useCase: AdminUseCase
+    private val adminUseCase: AdminUseCase,
+    private val authUseCase: AuthUseCase
 ): ViewModel() {
 
     val userList: MutableLiveData<PagingData<UserEntity>> by lazy { MutableLiveData() }
@@ -26,23 +28,27 @@ class AdminViewModel @Inject constructor(
     val user: MutableLiveData<UserEntity> by lazy { MutableLiveData() }
 
     fun getUserList() {
-        useCase.getUsers(viewModelScope) {
+        adminUseCase.getUsers(viewModelScope) {
             userList.postValue(it)
         }
     }
 
     fun getUserById(id: Int) {
-        useCase.getUserById(id) {
+        adminUseCase.getUserById(id) {
             user.postValue(it)
         }
     }
 
     fun updateUser(user: UserEntity) {
-        useCase.updateUser(user)
+        adminUseCase.updateUser(user)
     }
 
     fun deleteUser(id: Int) {
-        useCase.deleteUser(id)
+        adminUseCase.deleteUser(id)
+    }
+
+    fun logout() {
+        authUseCase.logout()
     }
 
 }

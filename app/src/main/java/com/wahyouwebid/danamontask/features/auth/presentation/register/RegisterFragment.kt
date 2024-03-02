@@ -28,7 +28,7 @@ class RegisterFragment: BaseFragment<FragmentRegisterBinding>(FragmentRegisterBi
     private val viewModel: AuthViewModel by viewModels()
 
     private val navigation: NavController? by lazy {
-        activity?.findNavController(R.id.nav_host_auth)
+        activity?.findNavController(R.id.nav_host_main)
     }
 
     private var userRole: Int = UserRole.USER.value
@@ -71,7 +71,7 @@ class RegisterFragment: BaseFragment<FragmentRegisterBinding>(FragmentRegisterBi
     }
 
     private fun registerValidate() = with(binding){
-        if (viewModel.isLoginValidate()) {
+        if (viewModel.isRegisterValidate()) {
             viewModel.register(
                 User(
                     username = etUsername.text.toString(),
