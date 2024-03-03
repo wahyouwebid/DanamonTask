@@ -1,7 +1,9 @@
 package com.wahyouwebid.danamontask.core.mapper
 
+import com.wahyouwebid.danamontask.core.entity.PhotoEntity
 import com.wahyouwebid.danamontask.core.entity.UserEntity
 import com.wahyouwebid.danamontask.core.model.User
+import com.wahyouwebid.danamontask.features.users.data.model.PhotoResponse
 
 /***********************************************************************************
  * Created by Ujang Wahyu
@@ -30,6 +32,16 @@ object DataMapper {
             role = this?.role ?: 0,
             email = this?.email ?: "",
             password = this?.password ?: ""
+        )
+    }
+
+    fun PhotoResponse?.mapPhotoResponseToPhotoEntity(): PhotoEntity {
+        return PhotoEntity(
+            id = this?.id,
+            albumId = this?.albumId,
+            thumbnailUrl = this?.thumbnailUrl,
+            title = this?.title,
+            url = this?.url
         )
     }
 }

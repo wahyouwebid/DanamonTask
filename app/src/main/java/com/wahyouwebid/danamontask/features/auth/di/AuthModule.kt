@@ -1,5 +1,6 @@
 package com.wahyouwebid.danamontask.features.auth.di
 
+import com.wahyouwebid.danamontask.features.auth.data.AuthDao
 import com.wahyouwebid.danamontask.core.database.RoomDB
 import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.auth.data.AuthRepositoryImpl
@@ -23,6 +24,9 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 @InstallIn(SingletonComponent::class)
 @Module
 class AuthModule {
+
+    @Provides
+    fun provideUserDao(database: RoomDB): AuthDao = database.authDao()
 
     @Provides
     fun provideDatasource(
