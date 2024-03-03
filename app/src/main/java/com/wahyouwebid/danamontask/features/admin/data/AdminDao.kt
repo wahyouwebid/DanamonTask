@@ -1,4 +1,4 @@
-package com.wahyouwebid.danamontask.core.dao
+package com.wahyouwebid.danamontask.features.admin.data
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
@@ -10,13 +10,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
 @Dao
-interface UserDao {
-
-    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
-    fun login(email: String, password: String): Single<UserEntity>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun register(data: UserEntity): Completable
+interface AdminDao {
 
     @Query("SELECT * FROM user WHERE email =:email")
     fun getUserByEmail(email: String): Single<UserEntity>

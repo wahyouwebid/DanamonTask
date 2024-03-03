@@ -5,16 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.wahyouwebid.danamontask.BuildConfig
-import com.wahyouwebid.danamontask.core.dao.UserDao
+import com.wahyouwebid.danamontask.core.entity.PhotoEntity
+import com.wahyouwebid.danamontask.features.auth.data.AuthDao
 import com.wahyouwebid.danamontask.core.entity.UserEntity
+import com.wahyouwebid.danamontask.features.admin.data.AdminDao
+import com.wahyouwebid.danamontask.features.users.data.local.UserDao
 
 @Database(
-    entities = [UserEntity::class, ],
+    entities = [UserEntity::class, PhotoEntity::class],
     version = BuildConfig.VERSION_CODE,
     exportSchema = false
 )
 abstract class RoomDB : RoomDatabase() {
 
+    abstract fun authDao() : AuthDao
+    abstract fun adminDao() : AdminDao
     abstract fun userDao() : UserDao
 
     companion object {

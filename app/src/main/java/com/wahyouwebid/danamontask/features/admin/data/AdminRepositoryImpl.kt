@@ -3,7 +3,6 @@ package com.wahyouwebid.danamontask.features.admin.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.wahyouwebid.danamontask.common.utils.logError
-import com.wahyouwebid.danamontask.core.dao.UserDao
 import com.wahyouwebid.danamontask.core.entity.UserEntity
 import com.wahyouwebid.danamontask.core.session.Sessions
 import com.wahyouwebid.danamontask.features.admin.domain.AdminRepository
@@ -21,7 +20,7 @@ import javax.inject.Inject
 
 
 class AdminRepositoryImpl @Inject constructor(
-    private val dao : UserDao,
+    private val dao : AdminDao,
     private val pagingConfig: PagingConfig,
     private val sessions: Sessions,
     private val disposable: CompositeDisposable,

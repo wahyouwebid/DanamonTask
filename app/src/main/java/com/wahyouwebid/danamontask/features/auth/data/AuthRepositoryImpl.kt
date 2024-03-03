@@ -31,7 +31,7 @@ class AuthRepositoryImpl @Inject constructor(
         password: String,
         result: (LoginResult?) -> Unit
     ) {
-        db.userDao().login(email, password)
+        db.authDao().login(email, password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -57,7 +57,7 @@ class AuthRepositoryImpl @Inject constructor(
         data: User,
         isSuccess: (Boolean) -> Unit
     ) {
-        db.userDao().register(data.mapUserToUserEntity())
+        db.authDao().register(data.mapUserToUserEntity())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { isSuccess.invoke(true) }
