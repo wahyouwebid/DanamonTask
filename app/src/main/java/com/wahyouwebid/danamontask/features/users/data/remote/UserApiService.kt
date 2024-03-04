@@ -16,8 +16,8 @@ interface UserApiService {
 
     @GET("photos")
     fun getPhotos(
-        @Query("page") page: Int,
-        @Query("limit") limit: Int,
+        @Query("_page") page: Int,
+        @Query("_limit") limit: Int,
     ): Single<List<PhotoResponse>>
 
 }
